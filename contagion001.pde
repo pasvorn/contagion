@@ -17,7 +17,7 @@ void setup() {
    p1[i] = new People(i);
  }
  p1[0].getsick(1);
- String filename = "data" + ".csv";
+ String filename = "src/data" + ".csv";
  output = createWriter(filename);
  output.println("Frame,Well,Sick,Recovered");
 }

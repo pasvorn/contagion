@@ -5,4 +5,8 @@ There are three files in this collection.
  - README.md - this read me file
  - contagion001.pde - simulator main loop
 
+When running this simulation, it create a data in 
+comma-separate-value (CSV) format in the "data" 
+directory. You need to make sure you create a directory.
+
 
