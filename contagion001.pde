@@ -1,15 +1,25 @@
-final int N = 2000;
+// number of People
+final int N = 800;
 
 int framenumber = 0;
 People[] p1 = new People[N];
-
+// PrinterWrite is for saving output for analysis
+PrintWriter output;
+/**
+We use randomSeed() call so we can repeat experiment with different
+parameters.
+*/
 void setup() {
- size(2000,1000); 
+ size(1000,640); 
+ randomSeed(1);
  frameRate(20);
  for(int i=0; i < N; i++) {
    p1[i] = new People(i);
  }
  p1[0].getsick(1);
+ String filename = "data" + ".csv";
+ output = createWriter(filename);
+ output.println("Frame,Well,Sick,Recovered");
 }
 
 void draw() {
@@ -27,14 +37,6 @@ void draw() {
       People person2 = p1[j];
       if( person1.meet(person2) ) {
         person1.contact(person2);
-        /* 
-        if( person1.sicked() ) {
-          if( !person2.sicked() ) {
-            if( random(0,1.0) < 0.4) person2.getsick(framenumber);
-          }
-        } else if ( person2.sicked()) {
-          if ( random(0,1.0) < 0.4) person1.getsick(framenumber);
-        } */
       }
     }
     p1[i].move(framenumber);
@@ -42,6 +44,11 @@ void draw() {
   }
 
   framenumber += 1;
-  println(framenumber,well_count, sick_count, immuned_count);
-  if( sick_count <= 0) exit();
+  output.println(framenumber + "," + well_count + "," +
+    sick_count + "," +immuned_count);
+  if( sick_count <= 0) {
+    output.flush();
+    output.close();
+    exit();
+  }
 }
