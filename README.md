@@ -9,4 +9,5 @@ When running this simulation, it create a data in
 comma-separate-value (CSV) format in the "data" 
 directory. You need to make sure you create a directory.
 
-
+Example of the session:
+https://flic.kr/p/2kDRAnt
